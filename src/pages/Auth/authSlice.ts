@@ -1,5 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { BackendErrors, LoginRequest, RegisterRequest, User } from "./Types";
+import {
+  AuthResponse,
+  BackendErrors,
+  LoginRequest,
+  RegisterRequest,
+  User,
+} from "./types";
 import { httpClient } from "../../http/httpClient";
 import { useNavigate } from "react-router-dom";
 
@@ -17,7 +23,7 @@ export const login = createAsyncThunk(
   "auth/login",
   async function (body: LoginRequest, thunkAPI) {
     try {
-      const res = await httpClient.post("users/login", body);
+      const res = await httpClient.post<AuthResponse>("users/login", body);
       return res.data;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.response.data);
@@ -28,7 +34,7 @@ export const registration = createAsyncThunk(
   "auth/registration",
   async function (body: RegisterRequest, thunkAPI) {
     try {
-      const res = await httpClient.post("users", body);
+      const res = await httpClient.post<AuthResponse>("users", body);
       return res.data;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.response.data);
@@ -40,7 +46,7 @@ export const getCurrentUser = createAsyncThunk(
   "auth/getCurrentUser",
   async function (_, thunkAPI) {
     try {
-      const res = await httpClient.get("user");
+      const res = await httpClient.get<AuthResponse>("user");
       return res.data;
     } catch (e: any) {
       return thunkAPI.rejectWithValue(e.message);

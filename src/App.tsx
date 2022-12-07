@@ -6,7 +6,7 @@ import Home from "./pages/Home/Home";
 import Login from "./pages/Auth/Login/Login";
 import Register from "./pages/Auth/Register/Register";
 import NotFound from "./pages/NotFound/NotFound";
-import MainLayout from "./pages/layouts/MainLayout";
+import MainLayout from "./pages/Layouts/MainLayout";
 import { useAppDispatch } from "./store/hooks";
 import { getCurrentUser } from "./pages/Auth/authSlice";
 import AuthenticatedRoute from "./hoc/AuthenticatedRoute";

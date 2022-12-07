@@ -1,11 +1,13 @@
 import { configureStore, Store } from "@reduxjs/toolkit";
 import { tagsSlice } from "../components/Tags/Tags.Slice";
 import { authSlice } from "../pages/Auth/authSlice";
+import { feedSlice } from "../components/Feed/feedSlice";
 
 export const store = configureStore({
   reducer: {
     tags: tagsSlice.reducer,
     auth: authSlice.reducer,
+    feed: feedSlice.reducer,
   },
 });
 
