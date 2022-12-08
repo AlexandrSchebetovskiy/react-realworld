@@ -3,6 +3,7 @@ import { useGetAllTagsQuery } from "./TagsApi";
 import Loader from "../UI/Loader";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { fetchTags } from "./Tags.Slice";
+import { Link } from "react-router-dom";
 
 const Tags = () => {
   const dispatch = useAppDispatch();
@@ -20,9 +21,13 @@ const Tags = () => {
           <Loader />
         ) : (
           tags?.map((tag, idx) => (
-            <a key={idx + tag} href="" className="tag-pill tag-default">
+            <Link
+              key={idx + tag}
+              to={"/feed/" + tag}
+              className="tag-pill tag-default"
+            >
               {tag}
-            </a>
+            </Link>
           ))
         )}
       </div>

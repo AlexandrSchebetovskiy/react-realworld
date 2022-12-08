@@ -20,7 +20,6 @@ export const fetchFeed = createAsyncThunk(
   "feed/fetchFeed",
   async function (url: string, thunkAPI) {
     const res = await httpClient.get<FeedResponse>(url);
-    console.log(res.data);
     return res.data;
   }
 );
@@ -30,9 +29,18 @@ export const feedSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchFeed.fulfilled, (state, action) => {
-      state.articles = action.payload.articles;
-      state.count = action.payload.articlesCount;
-    });
+    builder
+      .addCase(fetchFeed.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchFeed.fulfilled, (state, action) => {
+        state.articles = action.payload.articles;
+        state.count = action.payload.articlesCount;
+        state.isLoading = false;
+      })
+      .addCase(fetchFeed.rejected, (state) => {
+        state.isLoading = false;
+        state.error = "Something went wrong...";
+      });
   },
 });

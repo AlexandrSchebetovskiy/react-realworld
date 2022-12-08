@@ -11,23 +11,36 @@ import { useAppDispatch } from "./store/hooks";
 import { getCurrentUser } from "./pages/Auth/authSlice";
 import AuthenticatedRoute from "./hoc/AuthenticatedRoute";
 import NonAuthRoute from "./hoc/NonAuthRoute";
+import GlobalFeed from "./pages/GlobalFeed/GlobalFeed";
+import YourFeed from "./pages/YourFeed/YourFeed";
+import TagFeed from "./pages/TagFeed/TagFeed";
 
 function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
-    console.log("app");
     dispatch(getCurrentUser());
   }, []);
 
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route path="/" element={<Home />}>
-          <Route
-            path="feed"
-            element={<AuthenticatedRoute children={<h1>Hello world</h1>} />}
-          />
-        </Route>
+        <Route path="/" element={<GlobalFeed />}></Route>
+        <Route
+          path="/feed"
+          element={
+            <AuthenticatedRoute>
+              <YourFeed />
+            </AuthenticatedRoute>
+          }
+        ></Route>
+        <Route
+          path="/feed/:tag"
+          element={
+            <AuthenticatedRoute>
+              <TagFeed />
+            </AuthenticatedRoute>
+          }
+        ></Route>
         <Route
           path="/login"
           element={

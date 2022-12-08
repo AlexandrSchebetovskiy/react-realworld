@@ -2,6 +2,7 @@ import React, { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { fetchFeed } from "./feedSlice";
 import { Link } from "react-router-dom";
+import Loader from "../UI/Loader";
 
 interface Props {
   apiUrl: string;
@@ -13,6 +14,8 @@ const Feed: any = ({ apiUrl = "articles" }) => {
   useEffect(() => {
     dispatch(fetchFeed(apiUrl));
   }, []);
+
+  if (feed.isLoading) return <Loader />;
   return feed.articles?.map((article) => (
     <div key={article.slug} className="article-preview">
       <div className="article-meta">
