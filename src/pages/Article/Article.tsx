@@ -59,7 +59,7 @@ export const Article = () => {
               <ArticleMeta author={article.author} date={article.createdAt} />
             </div>
 
-            <Comments />
+            <Comments slug={article.slug} />
           </div>
         </div>
       )}
