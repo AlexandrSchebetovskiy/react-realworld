@@ -3,7 +3,7 @@ export interface User {
   token: string;
   username: string;
   bio: string;
-  image: null;
+  image: string;
 }
 export interface AuthResponse {
   user: User;

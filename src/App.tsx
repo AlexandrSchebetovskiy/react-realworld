@@ -14,6 +14,7 @@ import NonAuthRoute from "./hoc/NonAuthRoute";
 import GlobalFeed from "./pages/GlobalFeed/GlobalFeed";
 import YourFeed from "./pages/YourFeed/YourFeed";
 import TagFeed from "./pages/TagFeed/TagFeed";
+import Article from "./pages/Article/Article";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -33,14 +34,9 @@ function App() {
             </AuthenticatedRoute>
           }
         ></Route>
-        <Route
-          path="/feed/:tag"
-          element={
-            <AuthenticatedRoute>
-              <TagFeed />
-            </AuthenticatedRoute>
-          }
-        ></Route>
+        <Route path="/articles/:slug" element={<Article />} />
+
+        <Route path="/feed/:tag" element={<TagFeed />}></Route>
         <Route
           path="/login"
           element={

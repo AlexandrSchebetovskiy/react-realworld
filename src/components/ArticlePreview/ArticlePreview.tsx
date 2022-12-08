@@ -1,23 +1,33 @@
-import React from 'react';
-
-const ArticlePreview = () => {
+import React, { FC } from "react";
+import { Link } from "react-router-dom";
+import { Article } from "../Feed/types";
+interface ArticleProps {
+  article: Article;
+}
+const ArticlePreview: FC<ArticleProps> = ({ article }) => {
   return (
     <div className="article-preview">
       <div className="article-meta">
-        <a href="profile.html"><img src="http://i.imgur.com/Qr71crq.jpg"/></a>
+        <Link to={`profile/${article.author.username}`}>
+          <img src={article.author.image} />
+        </Link>
         <div className="info">
-          <a href="" className="author">Eric Simons</a>
-          <span className="date">January 20th</span>
+          <Link to={`profile/${article.author.username}`} className="author">
+            {article.author.username}
+          </Link>
+          <span className="date">
+            {new Date(article.createdAt).toDateString()}
+          </span>
         </div>
         <button className="btn btn-outline-primary btn-sm pull-xs-right">
-          <i className="ion-heart"></i> 29
+          <i className="ion-heart"></i> {article.favoritesCount}
         </button>
       </div>
-      <a href="" className="preview-link">
-        <h1>How to build webapps that scale</h1>
-        <p>This is the description for the post.</p>
+      <Link to={`articles/${article.slug}`} className="preview-link">
+        <h1>{article.title}</h1>
+        <p>{article.description}</p>
         <span>Read more...</span>
-      </a>
+      </Link>
     </div>
   );
 };
