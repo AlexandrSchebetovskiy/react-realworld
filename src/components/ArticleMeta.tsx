@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { Author } from "./Feed/types";
+import Date from "./UI/Date";
+import article from "../pages/Article/Article";
 
 interface ArticleMetaProps {
   author: Author;
@@ -17,7 +19,9 @@ export const ArticleMeta: FC<ArticleMetaProps> = ({ author, date }) => {
         <Link to={"/profile/" + author.username} className="author">
           {author.username}
         </Link>
-        <span className="date">{new Date(date).toDateString()}</span>
+        <span className="date">
+          <Date date={date} />
+        </span>
       </div>
       <button className="btn btn-sm btn-outline-secondary">
         <i className="ion-plus-round"></i>

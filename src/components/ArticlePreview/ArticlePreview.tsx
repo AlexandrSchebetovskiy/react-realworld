@@ -1,28 +1,14 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 import { Article } from "../Feed/types";
+import ArticleMeta from "../ArticleMeta";
 interface ArticleProps {
   article: Article;
 }
 const ArticlePreview: FC<ArticleProps> = ({ article }) => {
   return (
     <div className="article-preview">
-      <div className="article-meta">
-        <Link to={`profile/${article.author.username}`}>
-          <img src={article.author.image} />
-        </Link>
-        <div className="info">
-          <Link to={`profile/${article.author.username}`} className="author">
-            {article.author.username}
-          </Link>
-          <span className="date">
-            {new Date(article.createdAt).toDateString()}
-          </span>
-        </div>
-        <button className="btn btn-outline-primary btn-sm pull-xs-right">
-          <i className="ion-heart"></i> {article.favoritesCount}
-        </button>
-      </div>
+      <ArticleMeta author={article.author} date={article.createdAt} />
       <Link to={`articles/${article.slug}`} className="preview-link">
         <h1>{article.title}</h1>
         <p>{article.description}</p>
