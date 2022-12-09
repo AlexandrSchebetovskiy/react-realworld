@@ -15,6 +15,7 @@ import GlobalFeed from "./pages/GlobalFeed/GlobalFeed";
 import YourFeed from "./pages/YourFeed/YourFeed";
 import TagFeed from "./pages/TagFeed/TagFeed";
 import Article from "./pages/Article/Article";
+import Profile from "./pages/Profile/Profile";
 
 function App() {
   const dispatch = useAppDispatch();
@@ -25,7 +26,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<MainLayout />}>
-        <Route path="/" element={<GlobalFeed />}></Route>
+        <Route path="/" element={<GlobalFeed />} />
         <Route
           path="/feed"
           element={
@@ -33,10 +34,15 @@ function App() {
               <YourFeed />
             </AuthenticatedRoute>
           }
-        ></Route>
+        />
         <Route path="/articles/:slug" element={<Article />} />
-
-        <Route path="/feed/:tag" element={<TagFeed />}></Route>
+        <Route path="/feed/:tag" element={<TagFeed />} />
+        <Route path="/profile/:slug" element={<Profile />} />
+        {/*<Route*/}
+        {/*  path="/profile/:slug/favorited"*/}
+        {/*  */}
+        {/*  element={<Profile favorited={true} />}*/}
+        {/*/>*/}
         <Route
           path="/login"
           element={

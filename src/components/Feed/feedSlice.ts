@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { httpClient } from "../../http/httpClient";
 import { Article, FeedResponse } from "./types";
-
+var qs = require("qs");
 interface FeedState {
   articles: Article[] | null;
   count: number;
@@ -18,8 +18,9 @@ const initialState: FeedState = {
 
 export const fetchFeed = createAsyncThunk(
   "feed/fetchFeed",
-  async function (url: string, thunkAPI) {
-    const res = await httpClient.get<FeedResponse>(url);
+  async function ({ url, params }: { url: any; params: any }, thunkAPI) {
+    console.log(url);
+    const res = await httpClient.get<FeedResponse>(url, { params });
     return res.data;
   }
 );

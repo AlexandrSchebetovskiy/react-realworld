@@ -13,7 +13,7 @@ const YourFeed = () => {
         <div className="row">
           <div className="col-md-9">
             <FeedToggle />
-            <Feed apiUrl={"articles/feed"} />
+            <Feed apiUrl={"feed/"} />
           </div>
           <div className="col-md-3">
             <div className="sidebar">

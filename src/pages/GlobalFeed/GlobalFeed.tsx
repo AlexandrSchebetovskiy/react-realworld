@@ -14,7 +14,7 @@ const GlobalFeed = () => {
         <div className="row">
           <div className="col-md-9">
             <FeedToggle />
-            <Feed apiUrl={"articles"} />
+            <Feed />
           </div>
           <div className="col-md-3">
             <div className="sidebar">

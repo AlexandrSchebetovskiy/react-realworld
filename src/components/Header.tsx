@@ -25,7 +25,7 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/profile/settings">
+                <NavLink className="nav-link" to="/settings">
                   <i className="ion-gear-a"></i>&nbsp;Settings
                 </NavLink>
               </li>
