@@ -4,6 +4,7 @@ import { authSlice } from "../pages/Auth/authSlice";
 import { feedSlice } from "../components/Feed/feedSlice";
 import { articleSlice } from "../pages/Article/articleSlice";
 import { commentsSlice } from "../components/Comments/commentsSlice";
+import { profileSlice } from "../pages/Profile/profileSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     feed: feedSlice.reducer,
     article: articleSlice.reducer,
     comments: commentsSlice.reducer,
+    profile: profileSlice.reducer,
   },
 });
 

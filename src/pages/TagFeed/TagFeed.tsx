@@ -13,7 +13,7 @@ const TagFeed = () => {
   console.log(params);
 
   React.useEffect(() => {
-    dispatch(fetchFeed("articles/?tag=" + params.tag));
+    // dispatch(fetchFeed({ url: "", params: { tag: params.tag } }));
   }, [params]);
   return (
     <div className="home-page">
@@ -23,7 +23,7 @@ const TagFeed = () => {
         <div className="row">
           <div className="col-md-9">
             <FeedToggle />
-            <Feed apiUrl={"articles/?tag=" + params.tag} />
+            <Feed apiUrl={""} params={{ tag: params.tag as string }} />
           </div>
           <div className="col-md-3">
             <div className="sidebar">
